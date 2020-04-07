@@ -1,6 +1,5 @@
 require('dotenv').config();
 const express = require('express');
-const rateLimit = require('express-rate-limit');
 const helmet = require('helmet');
 const cookieParser = require('cookie-parser');
 const mongoose = require('mongoose');
@@ -21,11 +20,6 @@ app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-const limiter = rateLimit({
-  windowMs: 15 * 60 * 1000,
-  max: 100,
-});
-
 mongoose.connect(config.dbAddress, {
   useNewUrlParser: true,
   useCreateIndex: true,
@@ -37,7 +31,7 @@ mongoose.connect(config.dbAddress, {
 
 app.listen(config.PORT, () => {});
 //  routes
-app.use(limiter);
+app.use(config.limiter);
 
 // logging all requests to request.loq file
 app.use(requestLogger);
