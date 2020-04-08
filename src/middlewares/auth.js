@@ -5,7 +5,6 @@ const constants = require('../constants');
 
 function auth(req, res, next) {
   const token = req.cookies.jwt;
-
   let payload;
 
   try {

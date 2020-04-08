@@ -17,12 +17,6 @@ const loginValidation = celebrate({
   }),
 });
 
-const getUserValidation = celebrate({
-  params: Joi.object().keys({
-    id: Joi.string().alphanum().length(24),
-  }),
-});
-
 // validators for /articles route
 const createArticleValidation = celebrate({
   body: Joi.object().keys({
@@ -45,7 +39,6 @@ const deleteArticleValidation = celebrate({
 module.exports = {
   createUserValidation,
   loginValidation,
-  getUserValidation,
   createArticleValidation,
   deleteArticleValidation,
 };
