@@ -1,12 +1,12 @@
 # News Explorer API
 Api for news explorer
 
-[Link](http://www.api.mestoxyz.xyz)
+[Link](https://www.newsxyz.xyz/api)
 
 ## v 1.0.0
 
 ### Available at:
-  + www.api.mestoxyz.xyz 
+  + https://www.newsxyz.xyz/api
   + 84.201.154.27 
 
 Node.js server with express app.  

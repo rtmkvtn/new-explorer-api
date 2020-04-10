@@ -28,8 +28,8 @@ mongoose.connect(config.dbAddress, {
   });
 
 app.listen(config.PORT, () => {});
-//  routes
-app.use(config.limiter); // antiDDOS limiter
+// antiDDOS limiter
+app.use(config.limiter);
 // logging all requests to request.loq file
 app.use(requestLogger);
 // login, auth and all other router
