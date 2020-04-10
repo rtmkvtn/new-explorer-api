@@ -6,8 +6,6 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const { errors } = require('celebrate');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
-const loginRouter = require('./routes/loginRouter');
-const auth = require('./middlewares/auth');
 const mainRouter = require('./routes/index');
 const wrongAddress = require('./routes/wrongAddress');
 const { errorsHandler } = require('./middlewares/errorsHandler');
@@ -34,12 +32,8 @@ app.listen(config.PORT, () => {});
 app.use(config.limiter); // antiDDOS limiter
 // logging all requests to request.loq file
 app.use(requestLogger);
-
-app.use('/', loginRouter);
-// authorization to wright token into cookies.jwt
-app.use(auth);
-
-app.use(mainRouter);
+// login, auth and all other router
+app.use('/api', mainRouter);
 // logging all errors to error.log file
 app.use(errorLogger);
 // errors handlers
