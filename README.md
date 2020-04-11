@@ -210,7 +210,7 @@ Adds new article to the articles collection. Returns this article's json data
   name = [String], 2 to 30 characters  
   keyword = [String], 1+ characters 
   text = [String], 2+ characters 
-  date = [Date], `Date.now` by default 
+  date = [Date], YYYY.MM.DD HH:MM format date. `Date.now` by default 
   source = [String] 
   image = [url], link to the image 
   link = [url], link to the article   
