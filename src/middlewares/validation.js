@@ -23,7 +23,7 @@ const createArticleValidation = celebrate({
     keyword: Joi.string().required().min(1).max(30),
     title: Joi.string().required().min(2).max(30),
     text: Joi.string().required().min(2),
-    // date: Joi.string().required(),
+    date: Joi.date().required(),
     source: Joi.string().required().min(1),
     link: Joi.string().required().regex(urlRegExp).error(new Error('link is not a link!')),
     image: Joi.string().required().regex(urlRegExp).error(new Error('image is not a link!')),
