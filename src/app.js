@@ -4,6 +4,7 @@ const helmet = require('helmet');
 const cookieParser = require('cookie-parser');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+// const cors = require('cors');
 const { errors } = require('celebrate');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 const mainRouter = require('./routes/index');
@@ -13,16 +14,18 @@ const config = require('./config.js');
 
 const app = express();
 
+// app.use(cors);
 app.use(helmet());
 app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-mongoose.connect(config.MONGO_DB_ADDRESS, {
-  useNewUrlParser: true,
-  useCreateIndex: true,
-  useFindAndModify: false,
-})
+mongoose
+  .connect(config.MONGO_DB_ADDRESS, {
+    useNewUrlParser: true,
+    useCreateIndex: true,
+    useFindAndModify: false,
+  })
   .catch((err) => {
     console.error(err);
   });
