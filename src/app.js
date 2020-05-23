@@ -22,15 +22,13 @@ const config = require('./config.js');
 
 const app = express();
 
-// var allowCrossDomain = function(req, res, next) {
-//  res.header('Access-Control-Allow-Origin', "*");
-// res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
-//     res.header('Access-Control-Allow-Headers', 'Content-Type');
-//     next();
-// };
-// app.configure(function() {
-// app.use(allowCrossDomain);
-// });
+const allowCrossDomain = function (req, res, next) {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+  res.header('Access-Control-Allow-Headers', 'Content-Type');
+  next();
+};
+app.use(allowCrossDomain);
 // const corsOptions = {
 // credentials: true,
 // origin: (origin, callback) => {
