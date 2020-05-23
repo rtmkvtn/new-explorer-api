@@ -1,6 +1,6 @@
 const { celebrate, Joi } = require('celebrate');
 
-const urlRegExp = /^(https?:\/\/)?([\da-z.-]+)\.([a-z.]{2,6})([/\w .-]*)*\/?$/i;
+const urlRegExp = /^(https?:\/\/)?([\da-z.-]+)\.([a-z.]{2,6})([/\w\S .-]*)*\/?$/i;
 // validators vor /users route
 const createUserValidation = celebrate({
   body: Joi.object().keys({
@@ -21,7 +21,7 @@ const loginValidation = celebrate({
 const createArticleValidation = celebrate({
   body: Joi.object().keys({
     keyword: Joi.string().required().min(1).max(30),
-    title: Joi.string().required().min(2).max(30),
+    title: Joi.string().required().min(2),
     text: Joi.string().required().min(2),
     date: Joi.date().required(),
     source: Joi.string().required().min(1),
