@@ -6,13 +6,13 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 
 // const cors = require('cors');
+
 // const whitelist = [
 //   'http://localhost:8080',
 //   'https://fckxyz.github.io',
 //   'https://newsxyz.xyz',
 //   'https://www.newsxyz.xyz',
 // ];
-
 const { errors } = require('celebrate');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 const mainRouter = require('./routes/index');
@@ -39,6 +39,8 @@ app.use(allowCrossDomain);
 //   }
 // };
 // app.use(cors(corsOptions));
+
+// app.use(cors);
 app.use(helmet());
 app.use(cookieParser());
 app.use(bodyParser.json());
