@@ -7,7 +7,7 @@ Api for news explorer
 
 ### Available at:
   + https://www.newsxyz.xyz/api
-  + 84.201.154.27 
+  + 84.201.167.164 
 
 Node.js server with express app.  
 App connects to mongodb `mongodb://localhost:27017/news-explorer-db` using mongoose.  
