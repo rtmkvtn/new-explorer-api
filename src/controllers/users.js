@@ -12,28 +12,17 @@ const noSymbols = (input) => (escape(input) === 'undefined' ? '' : escape(input)
 
 module.exports.getUser = (req, res, next) => {
   User.findById(req.user._id)
-    .then((user) => res.send({
-      email: user.email,
-      name: user.name,
-    }))
+    .then((user) => res.send({ email: user.email, name: user.name }))
     .catch(next);
 };
 
 module.exports.createUser = (req, res, next) => {
-  const {
-    email,
-    password,
-  } = req.body;
+  const { email, password } = req.body;
   const name = noSymbols(req.body.name);
 
-  bcrypt.hash(password, 10)
-    .then((hash) => User.create(
-      {
-        name: escape(name),
-        email,
-        password: hash,
-      },
-    ))
+  bcrypt
+    .hash(password, 10)
+    .then((hash) => User.create({ name: escape(name), email, password: hash }))
     .then((user) => {
       res.status(201).send({
         _id: user._id,
@@ -60,8 +49,8 @@ module.exports.login = (req, res, next) => {
       res
         .cookie('jwt', token, {
           maxAge: 7 * 24 * 60 * 60000,
-           httpOnly: true,
-           sameSite: true,
+          httpOnly: true,
+          sameSite: true,
         })
         .send({ token });
     })
